@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="title" content="" /> 
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" type="text/css" href="templates/{[$cfg_template]}/css/min.tv.20140326.css" />
+    <script type="text/javascript" src="templates/{[$cfg_template]}/js/jquery.js"></script>
+    <script src="templates/{[$cfg_template]}/alertPlay/alertPlay.js"></script>
+    <script type="text/javascript" src="templates/{[$cfg_template]}/js/base.js"></script>
+</head>
+<body class="home">
+<div class="body_wrap search_actived" style="padding-top:40px;">
+	<nav>
+        <div class="channel_nav scroll_wrap">
+        	
+            <div class="scroller">
+            	<a style=" position:absolute; left:0px;" href="javascript:window.history.back();">返回</a>
+            	<a>{[$desc.what]}</a>
+            </div>
+        </div>
+    </nav>
+    <style>
+	.scroll_wrap { width:100%;}
+    .scroller { height: 40px; overflow: hidden; text-align:center;}
+	.video_detail .movie_image b{
+		width: 100px;
+		height: 150px;
+		display: block;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	
+	</style>
+    
+    <div class="video_detail">
+    	<div class="movie_image"><b style="background-image:url({[$desc.image]}); width:100px; height:150px; display:block;"></b></div>
+        
+    </div>
+	<div class="video_detail">
+    {[foreach key=key item=item from=$desc.infos]}
+        {[if $key=='优酷评分']}
+            {[if $item!='暂无']}
+            <div class="score" style="display: block;" data-value="num" data-type="attr" data-key="tv_score">
+            <b>{[$item]}</b>
+            </div>
+            {[/if]}
+        {[/if]}
+    {[/foreach]}
+    <h3 data-key="tv_name">{[$desc.title]}</h3>
+    <div data-key="tv_detail">
+	{[foreach key=key item=item from=$desc.infos]}
+        {[if $key=='剧情简介']}
+        {[elseif $key=='优酷评分']}
+        {[else]}
+        <label>{[$key]}:</label>
+    	<p>{[$item]}</p>
+        {[/if]}
+    {[/foreach]}
+    </div>
+    <div class="desc expand">
+    <div>
+    <span data-key="tv_desc">
+    	{[foreach key=key item=item from=$desc.infos]}
+            {[if $key=='剧情简介']}
+                {[$item]}
+            {[/if]}
+        {[/foreach]}
+    </span>
+    </div>
+    </div>
+    </div>
+    <div class="cate_title_wrap" style="display: block;">
+    <h2 class="cate_title">
+    	{[php]} $n =0; {[/php]}
+        {[foreach key=key item=item from=$from]}
+        <b {[php]}if($n == 0){echo 'class="c"';}{[/php]}  onclick="nTabs(this,{[php]}echo $n;{[/php]});">{[$item]}</b>        
+        {[php]}$n++;{[/php]}
+        {[/foreach]}
+    </h2>
+    </div>
+    {[php]} $i =0; {[/php]}
+    {[foreach key=key item=item from=$movies]}
+    <div class="play_list" {[php]} if($i != 0){echo 'style="display:none;"';}{[/php]} id="from_content{[php]} echo $i; {[/php]}">
+    	<ul>
+        	{[section name=i loop=$item]}
+        	<li><a href="javascript:void(0);" onClick="tanPlay('{[$item[i].url]}')">{[$item[i].benji]}</a></li>
+            {[/section]}
+        </ul>
+    </div>
+    {[php]}$i++;{[/php]}
+    {[/foreach]}
+</div>
+{[include file="footer.html"]}
+</body>
+</html>

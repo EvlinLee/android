@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>搜索</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="templates/{[$cfg_template]}/css/min.tv.20140326.css" />
+    <script type="text/javascript" src="templates/{[$cfg_template]}/js/jquery.js"></script>
+    <script src="templates/{[$cfg_template]}/alertPlay/alertPlay.js"></script>
+    <script>
+	var totalheight = 0;
+	function loadData(){
+		totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop()); 
+		if ($(document).height() <= totalheight) {
+			//alert("到底了");频繁在请求没有事务逻辑
+			var url = window.location.href;
+			var pageCurrent = $("#pageCurrent").val();
+			var loadType = $("#loadType").val();
+			if (loadType == "Y") {
+			$("#loadType").val('N');
+			$.ajax({
+				type:"POST", 
+				url:url+"&action=more",
+				dataType:"String",
+				data:{"page":pageCurrent},
+				beforeSend:function(){
+					$(".loading").remove();
+					$(".body_wrap").append('<div class="loading" style=" text-align:center;font-size: 0.9em; width:100%; padding:5px 0; color:#333;">数据加载中...</div>');					
+				},
+				success: function(str){
+					
+					if(str == 0){
+						$(".loading").remove();
+						$(".body_wrap").append('<div class="loading" style=" text-align:center;font-size: 0.9em; width:100%; padding:5px 0; color:#333;">没有更多了</div>');
+					}else{
+						$("#loadType").val('Y');
+						$("#pageCurrent").val(parseInt(pageCurrent)+1);
+						$(".grid_list").append(str);	
+					}
+				}
+			});
+			}
+		} 
+	}
+	$(window).scroll( function() { 
+		console.log("滚动条到顶部的垂直高度: "+$(document).scrollTop()); 
+		console.log("页面的文档高度 ："+$(document).height());
+		console.log('浏览器的高度：'+$(window).height());
+		loadData();} ); 
+	</script>
+</head>
+<body class="home">
+<div class="body_wrap search_actived">
+	{[include file="header.html"]}
+	<div class="grid_list">
+			<h1 class="cate_title">
+			剧集
+			</h1>
+			<dl class="item_list channel_101 column_4">
+            	{[section name=i loop=$movies]}
+                <dd>
+                    <div>
+                    <!-- VID_DOT 5_0 -->
+                    <a href="search_movie.php?url={[$movies[i].playlist_url]}" class="cover"><b style="background-image:url({[$movies[i].playlist_pic]})"></b>
+                    </a>
+                    <p>
+                        <a href="">{[$movies[i].playlist_title]}</a> 
+                    </p>
+                    </div>
+                </dd>
+                {[/section]}
+			</dl> 
+		 
+        <h1 class="cate_title">
+        视频
+        </h1>
+        <dl class="item_list channel_122 column_15">
+            {[section name=i loop=$short_movies]}
+            <dd>
+                <div>
+                <!-- VID_DOT 15_0 -->
+                <a href="javascript:void(0);" onClick="tanPlay('{[$short_movies[i].vod_url]}')" class="cover"><b style="background-image:url({[$short_movies[i].vod_pic]})"></b></a>
+                <p>
+                    <a href="javascript:void(0);" onClick="tanPlay('{[$short_movies[i].vod_url]}')">{[$short_movies[i].vod_title]}</a> 
+                </p>
+                </div>
+            </dd>
+            {[/section]}
+        </dl>
+       	
+	</div>
+    <div style="display:none;"><input type="hidden" id="pageCurrent" value=2 /><input type="hidden" id="loadType" value="Y" /></div>
+    
+</div>
+{[include file="footer.html"]}
+</body>
+</html>

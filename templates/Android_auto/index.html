@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="title" content="视频" /> 
+	<meta name="description" content="视频" />
+	<meta name="keywords" content="视频" />
+	<meta property="qc:admins" content="25250114746637056375" />
+	<meta name="baidu-tc-cerfication" content="4ab4ba8d59e41ee0458a64f3ee41651b" />
+	<link rel="apple-touch-icon-precomposed" href="images/icons.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/iconl.png" />
+	<link rel="stylesheet" type="text/css" href="templates/{[$cfg_template]}/css/min.tv.20140326.css" />
+    <script type="text/javascript" src="templates/{[$cfg_template]}/js/jquery.js"></script>
+    <script src="templates/{[$cfg_template]}/alertPlay/alertPlay.js"></script>
+</head>
+<body class="home">
+<div class="body_wrap search_actived">
+    {[include file="header.html"]}
+	<div class="grid_list">
+			<!-- ITEM_DOT_15_hots_热点_122_1 -->
+			<h1 class="cate_title">
+				 <a href="news.php">更多</a>热点
+			</h1>
+			<dl class="item_list channel_122 column_15">
+            	{[section name=i loop=$news]}
+                
+                <dd>
+                	<div>
+                    <!-- VID_DOT 15_0 -->
+                    <a href="javascript:void(0);" onClick="tanPlay('{[$news[i].vod_url]}','','{[$news[i].vod_title|escape:'html']}','{[$news[i].vod_pic]}')" class="cover"><b style="background-image:url({[$news[i].vod_pic]})"></b></a>
+                    <p>
+                        <a href="javascript:void(0);" onClick="tanPlay('{[$news[i].vod_url]}','','{[$news[i].vod_title|escape:'html']}','{[$news[i].vod_pic]}')">{[$news[i].vod_title]}</a> 
+                    </p>
+                    </div>
+                </dd>
+                
+                {[/section]}
+			</dl> 
+			<!-- ITEM_DOT_4_drama_电视剧_101_2 -->
+            
+			<h1 class="cate_title">
+				 <a href="channel.php?typeid=1">更多</a>电视剧
+			</h1>
+            
+			<dl class="item_list channel_101 column_4">
+            	{[section name=i loop=$programs_array.1]}
+                <dd>
+                    <div>
+                    <!-- VID_DOT 5_0 -->
+                    <a href="movie.php?mid={[$programs_array.1[i].playlist_id]}" class="cover"><b style="background-image:url({[$programs_array.1[i].playlist_pic]})"></b>
+                    <span class="sign">
+                    <span class="bg"></span>
+                        <span class="i">{[$programs_array.1[i].playlist_year]}</span>
+                    </span></a>
+                    <p>
+                        <a href="movie.php?mid={[$programs_array.1[i].playlist_id]}">{[$programs_array.1[i].playlist_title]}</a> 
+                    </p>
+                    </div>
+                </dd>
+                {[/section]}
+			 	
+			</dl> 
+		 <div class='ad_banner'></div>
+			<!-- ITEM_DOT_34_usdrama_美剧_0_3 -->
+			<h1 class="cate_title">
+				 <a href="channel.php?typeid=2">更多</a>电影
+			</h1>
+			<dl class="item_list channel_102 column_34">
+            	{[section name=i loop=$programs_array.2]}
+                <dd>
+                    <div>
+                    <!-- VID_DOT 5_0 -->
+                    <a href="movie.php?mid={[$programs_array.2[i].playlist_id]}" class="cover"><b style="background-image:url({[$programs_array.2[i].playlist_pic]})"></b>
+                    <span class="sign">
+                    <span class="bg"></span>
+                        <span class="i">{[$programs_array.2[i].playlist_year]}</span>
+                    </span></a>
+                    <p>
+                        <a href="movie.php?mid={[$programs_array.2[i].playlist_id]}">{[$programs_array.2[i].playlist_title]}</a> 
+                    </p>
+                    </div>
+                </dd>
+                {[/section]}
+			</dl> 
+			<!-- ITEM_DOT_143_krdrama_韩剧_0_4 -->
+			<h1 class="cate_title">
+				 <a href="channel.php?typeid=4">更多</a>综艺
+			</h1>
+			<dl class="item_list channel_104 column_143">
+            	{[section name=i loop=$programs_array.3]}
+                <dd>
+                    <div>
+                    <!-- VID_DOT 5_0 -->
+                    <a href="movie.php?mid={[$programs_array.3[i].playlist_id]}" class="cover"><b style="background-image:url({[$programs_array.3[i].playlist_pic]})"></b>
+                    <span class="sign">
+                    <span class="bg"></span>
+                        <span class="i">{[$programs_array.3[i].playlist_year]}</span>
+                    </span></a>
+                    <p>
+                        <a href="movie.php?mid={[$programs_array.3[i].playlist_id]}">{[$programs_array.3[i].playlist_title]}</a> 
+                    </p>
+                    </div>
+                </dd>
+                {[/section]}
+			</dl> 
+		
+			<!-- ITEM_DOT_144_jpdrama_日剧_0_5 -->
+			<h1 class="cate_title">
+			
+				 <a href="channel.php?typeid=5">更多</a>动漫
+			</h1>
+			<dl class="item_list channel_105 column_144">
+            	{[section name=i loop=$programs_array.4]}
+                <dd>
+                    <div>
+                    <!-- VID_DOT 5_0 -->
+                    <a href="movie.php?mid={[$programs_array.4[i].playlist_id]}" class="cover"><b style="background-image:url({[$programs_array.4[i].playlist_pic]})"></b>
+                    <span class="sign">
+                    <span class="bg"></span>
+                        <span class="i">{[$programs_array.4[i].playlist_year]}</span>
+                    </span></a>
+                    <p>
+                        <a href="movie.php?mid={[$programs_array.4[i].playlist_id]}">{[$programs_array.4[i].playlist_title]}</a> 
+                    </p>
+                    </div>
+                </dd>
+                {[/section]}
+			</dl> 
+            		
+			<!-- ITEM_DOT_33_music_音乐_121_13 -->
+			<h1 class="cate_title">
+			<a href="musics.php">更多</a>音乐
+			</h1>
+			<dl class="item_list channel_121 column_33">
+                {[section name=i loop=$musics]}
+                <dd>
+                    <div>
+                    <!-- VID_DOT 5_0 -->
+                    <a href="javascript:void(0);" onClick="tanPlay('{[$musics[i].vod_url]}','','{[$musics[i].vod_title|escape:'html']}','{[$musics[i].vod_pic]}')" class="cover">
+                        <b style="background-image:url({[$musics[i].vod_pic]})"></b>
+                        <span class="sign">
+                        <span class="bg"></span>
+                        <span class="i">{[$musics[i].length]}</span>
+                        </span>
+                    </a>
+                    <p>
+                        <a href="javascript:void(0);" onClick="tanPlay('{[$musics[i].vod_url]}','','{[$musics[i].vod_title|escape:'html']}','{[$musics[i].vod_pic]}')">{[$musics[i].vod_title]}</a> 
+                        <span>演唱：{[$musics[i].vod_singer]}</span>
+                    </p>
+                    </div>
+                </dd>
+                {[/section]}
+			</dl> 
+	</div>
+</div>
+
+</body>
+</html>

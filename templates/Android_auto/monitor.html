@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>监控</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="title" content="" /> 
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+    <link rel="stylesheet" type="text/css" href="templates/{[$cfg_template]}/css/min.tv.20140326.css" />
+    <script type="text/javascript" src="templates/{[$cfg_template]}/js/jquery.js"></script>
+    
+    <style type="text/css">
+	
+.play_list{ padding-top:0px;}
+.play_list li{
+	height:40px;
+	display:inline;
+	float:left;
+	width:70%;
+}
+.play_list li.play{ width:30%;}
+
+.play_list li a{
+	background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    color: #AAAAAA;
+    display: block;
+    font-weight: 700;
+    margin:0 4px;
+    overflow: hidden;
+    padding: 0.5em 0.8em;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 0 #FFFFFF;
+    white-space: nowrap;
+	text-align:center;
+	
+}
+.play_list li a:hover{
+	background: none repeat scroll 0 0 #C21408;
+	border: 1px solid #9E1007;
+	color:#FFF;
+}
+
+
+	</style>
+</head>
+<body class="home">
+
+<div class="body_wrap search_actived">
+{[include file="header.html"]}
+	 <div class="play_list"  id="from_content0">
+     	<h1 class="cate_title">
+				 <a href="map.php">地图</a>监控列表
+			</h1>
+    	<ul>
+        	{[section name=i loop=$comera]}
+            <li><a href="map.php?lng={[$comera[i].lng]}&lat={[$comera[i].lat]}">{[$comera[i].address]}</a></li>
+            <li class="play"><a href="http://218.94.4.146:19000/RESTfull/cc_api.php?req=hlsdemoex">播放监控</a></li>
+            {[/section]}
+        </ul>
+    </div>
+</div>
+{[include file="footer.html"]}
+</body>
+</html>

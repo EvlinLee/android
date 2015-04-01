@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页 搜狐视频</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="title" content="" /> 
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta property="qc:admins" content="25250114746637056375" />
+	<meta name="baidu-tc-cerfication" content="4ab4ba8d59e41ee0458a64f3ee41651b" />
+	<link rel="apple-touch-icon-precomposed" href="images/icons.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/iconl.png" />
+	<link rel="stylesheet" type="text/css" href="templates/{[$cfg_template]}/css/min.tv.20140326.css?3" />
+    <script type="text/javascript" src="templates/{[$cfg_template]}/js/jquery.js"></script>
+    <script src="templates/{[$cfg_template]}/alertPlay/alertPlay.js?79"></script>
+    <script type="text/javascript" src="templates/{[$cfg_template]}/js/base.js"></script>
+</head>
+<body class="home">
+<div class="body_wrap search_actived">
+	{[include file='header.html']}
+    <h2 class="cate_title" float_menu="detail">
+    	<b class="k_detail" key="detail">
+        {[if $info.playlist_class==1]}
+        电视剧
+        {[elseif $info.playlist_class==2]}
+        电影
+        {[elseif $info.playlist_class==3]}
+        综艺
+        {[elseif $info.playlist_class==4]}
+        动漫
+        {[else]}
+        其他
+        {[/if]}
+        </b>
+    </h2>
+    <div class="video_detail">
+    	<div class="movie_image"><b style="background-image:url({[$info.playlist_pic]})"></b></div>   
+    </div>
+	<div class="video_detail">
+        <div class="score" style="display: block;" data-value="num" data-type="attr" data-key="tv_score">
+        <b>{[$info.playlist_grade]}</b>
+        </div>
+    <h3 data-key="tv_name">{[$info.playlist_title]}</h3>
+    <div data-key="tv_detail">
+        <label>主演：</label>
+    	<p>{[$info.playlist_actors]}</p>
+        <label>地区：</label>
+    	<p>{[$info.playlist_country]}</p>
+        <label>导演：</label>
+    	<p>{[$info.playlist_director]}</p>
+        <label>类型：</label>
+    	<p>{[$info.playlist_type]}</p>
+        <label>年代：</label>
+    	<p>{[$info.playlist_year]}</p>
+        <label>上线时间：</label>
+    	<p>{[$info.playlist_created]}</p>
+        
+    </div>
+    <div class="desc expand">
+    <div>
+    <span data-key="tv_desc">
+    	{[$desc.playlist_description]}
+    </span>
+    </div>
+    </div>
+    </div>
+    <div class="cate_title_wrap" style="display: block;">
+    <h2 class="cate_title">
+        <b class="c" onclick="">剧集</b>
+    </h2>
+    </div>
+    {[php]} $i =0; {[/php]}
+    {[foreach key=key item=item from=$movies]}
+    <div class="play_list" {[php]} if($i != 0){echo 'style="display:none;"';}{[/php]} id="from_content{[php]} echo $i; {[/php]}">
+    	<ul>
+        	{[section name=i loop=$item]}
+            {[if $item[i].vod_file_urls=='']}
+        	<li><a href="javascript:void(0);" onClick="tanPlay('{[$item[i].vod_url]}')">{[$item[i].vod_title]}</a></li>
+            {[else]}
+            <li><a href="javascript:void(0);" onClick="tanPlay('{[$item[i].vod_file_urls]}')">{[$item[i].vod_title]}</a></li>
+            {[/if]}
+            {[/section]}
+        </ul>
+    </div>
+    
+    {[php]}$i++;{[/php]}
+    {[/foreach]}
+</div>
+{[include file="footer.html"]}
+</body>
+</html>

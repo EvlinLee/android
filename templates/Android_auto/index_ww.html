@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页 搜狐视频</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="title" content="搜狐视频,视频手机版,视频网站,视频播放" /> 
+	<meta name="description" content="搜狐视频是搜狐旗下专业在线视频播放,视频发布,视频搜索 - 视频服务平台,提供正版高清电影、电视剧、综艺节目、纪录片在线观看,网罗最新最热新闻、娱乐视频资讯,同时提供免费视频空间和视频分享服务.- 搜狐视频" />
+	<meta name="keywords" content="搜狐视频,视频手机版,视频网站,视频播放,index" />
+	<meta property="qc:admins" content="25250114746637056375" />
+	<meta name="baidu-tc-cerfication" content="4ab4ba8d59e41ee0458a64f3ee41651b" />
+	<link rel="apple-touch-icon-precomposed" href="images/icons.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/iconl.png" />
+	<link rel="stylesheet" type="text/css" href="templates/{[$cfg_template]}/css/base.css?2" /> 
+</head>
+<body class="home">
+<div class="body_wrap">
+<!--<script>
+document.write("可用宽度：" + screen.availWidth);
+</script>-->
+		<nav>
+            <a href="/m.tv.sohu.com" class="logo">搜狐视频<em><b></b></em></a>
+            
+            <div class="nav_menus">
+                <form class="item search" action="/so">
+                    <button type="submit">搜索</button>
+                    <span><input type="search" id="top_search" name="wd" value="" placeholder="请输入片名..." autocomplete="off" />
+                    <b class="icon icon_search"><em></em></b>
+                    </span>
+                </form>
+                <a class="item icon_history"><span><b class="icon"><em><em></em></em></b><b class="num"></b></span></a>
+            </div>
+            <!-- 频道导航 -->
+            <div class="channel_nav scroll_wrap">
+                <div class="scroller">
+                    <a position="index" href="/" class="c">首页</a><a position="drama" href="/drama">电视剧</a><a position="show" href="/show">综艺</a><a position="movie" href="/movie">电影</a><a position="comic" href="/comic">动漫</a><a position="news" href="/news">新闻</a><a position="sports" href="/m.s.sohu.com/sports">音乐</a>
+                </div>
+            </div>
+        </nav>
+        
+		<div class="grid_list">
+    		<!-- 新闻 -->
+			<h1 class="cate_title">
+				 <a href="news.php">更多</a>新闻
+			</h1>
+			<dl class="item_list">
+            {[section name=i loop=$news]}
+			<dd>
+                <div>
+                <!-- VID_DOT 5_0 -->
+                <a href="/v1679707.shtml?channeled=1210010600" class="cover">
+                    <b style="background-image:url({[$news[i].image]})"></b>
+                    <span class="sign">
+                    <span class="bg"></span>
+                    <span class="i">{[$news[i].times]}</span>
+                    </span>
+                </a>
+                <p>
+                    <a href="/v1679707.shtml?channeled=1210010600">{[$news[i].title]}</a> 
+                </p>
+                </div>
+            </dd>
+            {[/section]}
+               	
+			</dl> 
+            <!-- 电视剧 -->
+			<h1 class="cate_title">
+			
+				 <a href="/show">更多</a>电视剧
+			</h1>
+			<dl class="item_list channel_100">
+            {[section name=i loop=$programs_array.1]}
+			<dd>
+                <div>
+                <!-- VID_DOT 5_0 -->
+                <a href="/v1679707.shtml?channeled=1210010600" class="cover"><b style="background-image:url({[$programs_array.1[i].image]})"></b>
+                <span class="sign">
+                <span class="bg"></span>
+                <span class="i">{[$programs_array.1[i].year]}</span>
+                </span></a>
+                <p>
+                    <a href="/v1679707.shtml?channeled=1210010600">{[$programs_array.1[i].title]}</a> 
+                    <span>评分：{[foreach key=key item=item from=$programs_array.1[i].infos]}
+                        {[if $key=='优酷评分']}
+                            {[$item]}
+                        {[/if]}
+                    {[/foreach]}</span>
+                </p>
+                </div>
+            </dd>
+            {[/section]}
+			</dl> 
+			<!-- 电影 -->
+			<h1 class="cate_title">
+			
+				 <a href="/show">更多</a>电影
+			</h1>
+			<dl class="item_list channel_100">
+            {[section name=i loop=$programs_array.2]}
+			<dd>
+                <div>
+                <!-- VID_DOT 5_0 -->
+                <a href="/v1679707.shtml?channeled=1210010600" class="cover"><b style="background-image:url({[$programs_array.2[i].image]})"></b>
+                <span class="sign">
+                <span class="bg"></span>
+                <span class="i">{[$programs_array.2[i].year]}</span>
+                </span>
+                </a>
+                <p>
+                    <a href="/v1679707.shtml?channeled=1210010600">{[$programs_array.2[i].title]}</a> 
+                    <span>评分：{[foreach key=key item=item from=$programs_array.2[i].infos]}
+                        {[if $key=='优酷评分']}
+                            {[$item]}
+                        {[/if]}
+                    {[/foreach]}</span>
+                </p>
+                </div>
+            </dd>
+            {[/section]}
+			</dl> 
+			<!-- 音乐 -->
+			<h1 class="cate_title">
+				 <a href="news.php">更多</a>音乐
+			</h1>
+			<dl class="item_list">
+            {[section name=i loop=$musics]}
+			<dd>
+                <div>
+                <!-- VID_DOT 5_0 -->
+                <a href="/v1679707.shtml?channeled=1210010600" class="cover">
+                    <b style="background-image:url({[$musics[i].image]})"></b>
+                    <span class="sign">
+                    <span class="bg"></span>
+                    <span class="i">{[$musics[i].length]}</span>
+                    </span>
+                </a>
+                <p>
+                    <a href="/v1679707.shtml?channeled=1210010600">{[$musics[i].title]}</a> 
+                    <span>演唱：{[$musics[i].singer]}</span>
+                </p>
+                </div>
+            </dd>
+            {[/section]}
+			</dl>
+            <!-- 综艺 -->
+			<h1 class="cate_title">
+			
+				 <a href="/show">更多</a>综艺
+			</h1>
+			<dl class="item_list channel_100">
+            {[section name=i loop=$programs_array.4]}
+			<dd>
+                <div>
+                <!-- VID_DOT 5_0 -->
+                <a href="/v1679707.shtml?channeled=1210010600" class="cover"><b style="background-image:url({[$programs_array.4[i].image]})"></b>
+                <span class="sign">
+                <span class="bg"></span>
+                <span class="i">{[$programs_array.4[i].year]}</span>
+                </span></a>
+                <p>
+                    <a href="/v1679707.shtml?channeled=1210010600">{[$programs_array.4[i].title]}</a> 
+                    <span>评分：{[foreach key=key item=item from=$programs_array.4[i].infos]}
+                        {[if $key=='优酷评分']}
+                            {[$item]}
+                        {[/if]}
+                    {[/foreach]}</span>
+                </p>
+                </div>
+            </dd>
+            {[/section]}
+			</dl>
+            <!-- 动漫 -->
+			<h1 class="cate_title">
+			
+				 <a href="/show">更多</a>动漫
+			</h1>
+			<dl class="item_list channel_100">
+            {[section name=i loop=$programs_array.5]}
+			<dd>
+                <div>
+                <!-- VID_DOT 5_0 -->
+                <a href="/v1679707.shtml?channeled=1210010600" class="cover"><b style="background-image:url({[$programs_array.5[i].image]})"></b>
+                <span class="sign">
+                <span class="bg"></span>
+                <span class="i">{[$programs_array.5[i].year]}</span>
+                </span></a>
+                <p>
+                    <a href="/v1679707.shtml?channeled=1210010600">{[$programs_array.5[i].title]}</a> 
+                    <span>评分：{[foreach key=key item=item from=$programs_array.5[i].infos]}
+                        {[if $key=='优酷评分']}
+                            {[$item]}
+                        {[/if]}
+                    {[/foreach]}</span>
+                </p>
+                </div>
+            </dd>
+            {[/section]}
+			</dl>  
+	</div>
+</div>
+ 
+<footer>
+	&copy;2013 Sohu Inc. 
+	<span><a href="tv.sohu.com/upload/touch/feedback.html">意见反馈</a>·<a  href="tv.sohu.com/#pc">电脑版</a></span>
+</footer>
+<noscript>
+	<img src="/b.scorecardresearch.com/p?c1=2&amp;c2=7395122&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cj=1" /> 
+</noscript>
+</body>
+</html>

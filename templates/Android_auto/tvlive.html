@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>直播</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="title" content="" /> 
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta property="qc:admins" content="25250114746637056375" />
+	<meta name="baidu-tc-cerfication" content="4ab4ba8d59e41ee0458a64f3ee41651b" />
+	<link rel="apple-touch-icon-precomposed" href="images/icons.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/iconl.png" />
+	<link rel="stylesheet" type="text/css" href="templates/{[$cfg_template]}/css/min.tv.20140326.css" />
+    <script type="text/javascript" src="templates/{[$cfg_template]}/js/jquery.js"></script>
+    <script src="templates/{[$cfg_template]}/alertPlay/alertPlay.js"></script>
+</head>
+<body class="home">
+<div class="body_wrap search_actived">
+	{[include file="header.html"]}
+	<div class="grid_list">
+        <!-- ITEM_DOT_15_hots_热点_122_1 -->
+        <h1 class="cate_title">直播</h1>
+        <dl class="item_list channel_122 column_15">
+	            	
+            {[section name=i loop=$channels]}
+            
+            <dd>
+            	<div>
+                <!--<a href="javascript:void(0);" class="cover"><b style="background-image:url()"></b></a>-->
+                <p>
+                    <a href="javascript:void(0);" onClick="tvlive('{[$channels[i].channel_ip]}',{[$channels[i].channel_port]},{[$channels[i].channel_proid]},{[$channels[i].channel_hlsid]});">{[$channels[i].channel_name]}</a>
+                </p>
+                </div>
+            </dd>
+            
+            {[/section]}
+            
+        </dl>
+        
+        <style type="text/css">
+			.item_list p:hover{ background-color:#9e1007;}
+			.item_list p a:hover{ color:#fff;}
+		</style>
+	</div>
+	    
+    <div style="display:none;"><input type="hidden" id="pageCurrent" value=2 /><input type="hidden" id="loadType" value="Y" /></div>
+</div>
+</body>
+</html>
